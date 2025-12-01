@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# SwipeHome
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Εφαρμογή τύπου «Tinder για ακίνητα» σε React. Οι χρήστες εγγράφονται/συνδέονται ως ενοικιαστές (seekers) ή ιδιοκτήτες (owners), κάνουν swipe σε ακίνητα ή προφίλ ενδιαφερόμενων, δημιουργούν matches και συνομιλούν μέσω ενσωματωμένου chat. Τα δεδομένα είναι mock/in-memory και αποθηκεύονται σε `localStorage`.
 
-## Available Scripts
+## Τι προσφέρει
+- **Feed με swipe**: Οι ενοικιαστές βλέπουν κάρτες ακινήτων, οι ιδιοκτήτες κάρτες ενδιαφερομένων (`src/components/Home.js`).
+- **Matches & ειδοποιήσεις**: Κάθε “right swipe” δημιουργεί match, εμφανίζει popup και δημιουργεί ειδοποίηση (`src/context/MatchContext.js`).
+- **Chat ανά match**: Πραγματικό chat per match με σήμανση ειδοποιήσεων ως αναγνωσμένων (`src/components/ChatScreen.js`).
+- **Προφίλ & αγαπημένα**: Διακριτές σελίδες προφίλ για seekers/owners και λίστα αγαπημένων ακινήτων για seekers (`src/components/SeekerProfile.js`, `src/components/OwnerProfile.js`).
+- **Mock backend**: In-memory API client που σπέρνει δεδομένα από `src/data/dummyData.js` σε `localStorage` (`src/services/api/mockClient.js`).
 
-In the project directory, you can run:
+## Προαπαιτούμενα
+- Node.js 18+ και npm
 
-### `npm start`
+## Τοπική εκτέλεση (development)
+```bash
+npm install
+npm start
+```
+- Ανοίγει στο http://localhost:3000.
+- Τα mock δεδομένα (χρήστες/ακίνητα) σπέρνονται αυτόματα στο `localStorage`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Χρήσιμα δοκιμαστικά credentials
+- Seeker: `admin@example.com` / `admin`
+- Owner: `dimitris@example.com` / `123`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Mock reset
+- Το mock API σπέρνει δεδομένα σε `localStorage` και πλέον ελέγχει “έκδοση” (`2025-02-08-50props`). Όταν αυτή αλλάζει, τα mocks ξαναγράφονται αυτόματα (properties, owners, seekers, matches, messages, notifications). Δεν χρειάζεται χειροκίνητο καθάρισμα.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Άλλα scripts
+- `npm test` – jest/react-testing-library watcher
+- `npm run build` – παραγωγικό build στο `build/`
